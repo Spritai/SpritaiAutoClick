@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Media;
@@ -8,6 +9,7 @@ namespace SpritaiAutoClick
     public partial class Form1 : Form
     {
         private System.Windows.Forms.Timer clickTimer;
+        private NotifyIcon notifyIcon;
 
         [DllImport("user32.dll")]
         private static extern bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, Keys vk);
@@ -41,6 +43,12 @@ namespace SpritaiAutoClick
 
             kryptonCheckBox1.AutoCheck = false;
             RegisterHotKey(this.Handle, currentHotkeyId, MOD_NONE, currentHotkeyKey);
+
+            // Initialisation de la notification
+            notifyIcon = new NotifyIcon();
+            notifyIcon.Visible = true;
+            notifyIcon.Icon = SystemIcons.Information;
+            notifyIcon.BalloonTipTitle = "Spritaï AutoClick";
         }
 
         private void kryptonTextBox1_KeyDown(object sender, KeyEventArgs e)
@@ -72,7 +80,7 @@ namespace SpritaiAutoClick
 
         private void ClickTimer_Tick(object sender, EventArgs e)
         {
-            // ANTI SOURIS SUR FENETRE
+            // Anti click sur fenetre
             Point cursorScreenPos = Cursor.Position;
             Point cursorClientPos = this.PointToClient(cursorScreenPos);
 
@@ -94,6 +102,12 @@ namespace SpritaiAutoClick
             PlayClickSound();
             kryptonCheckBox1.Checked = true;
             clickTimer.Start();
+
+            if (NotifCheck.Checked)
+            {
+                notifyIcon.BalloonTipText = "L'autoclick a démarré.";
+                notifyIcon.ShowBalloonTip(3000);
+            }
         }
 
         private void StopButton_Click(object sender, EventArgs e)
@@ -101,6 +115,12 @@ namespace SpritaiAutoClick
             PlayClickSound();
             kryptonCheckBox1.Checked = false;
             clickTimer.Stop();
+
+            if (NotifCheck.Checked)
+            {
+                notifyIcon.BalloonTipText = "L'autoclick a été arrêté.";
+                notifyIcon.ShowBalloonTip(3000);
+            }
         }
 
         private void kryptonCheckBox1_CheckedChanged(object sender, EventArgs e)
@@ -122,7 +142,8 @@ namespace SpritaiAutoClick
             clickTimer.Interval = (int)MsValue.Value;
         }
 
-        // SON
+        private void NotifCheck_CheckedChanged(object sender, EventArgs e) { }
+
         private void PlayClickSound()
         {
             try
@@ -137,19 +158,3 @@ namespace SpritaiAutoClick
         }
     }
 }
-
-
-
-
-
-//   $$$$$$\  $$$$$$$\  $$$$$$$\  $$$$$$\ $$$$$$$$\  $$$$$$\  $$$$$$\ 
-//  $$  __$$\ $$  __$$\ $$  __$$\ \_$$  _|\__$$  __|$$  __$$\ \_$$  _|
-//  $$ /  \__|$$ |  $$ |$$ |  $$ |  $$ |     $$ |   $$ /  $$ |  $$ |  
-//  \$$$$$$\  $$$$$$$  |$$$$$$$  |  $$ |     $$ |   $$$$$$$$ |  $$ |  
-//   \____$$\ $$  ____/ $$  __$$<   $$ |     $$ |   $$  __$$ |  $$ |  
-//  $$\   $$ |$$ |      $$ |  $$ |  $$ |     $$ |   $$ |  $$ |  $$ |  
-//  \$$$$$$  |$$ |      $$ |  $$ |$$$$$$\    $$ |   $$ |  $$ |$$$$$$\ 
-//   \______/ \__|      \__|  \__|\______|   \__|   \__|  \__|\______|
-//                                                                    
-                                         
-

@@ -37,6 +37,7 @@
             kryptonTextBox1 = new Krypton.Toolkit.KryptonTextBox();
             kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             MsValue = new Krypton.Toolkit.KryptonNumericUpDown();
+            NotifCheck = new Krypton.Toolkit.KryptonCheckBox();
             SuspendLayout();
             // 
             // kryptonCustomPaletteBase1
@@ -117,7 +118,7 @@
             kryptonLabel1.Name = "kryptonLabel1";
             kryptonLabel1.Size = new Size(128, 20);
             kryptonLabel1.TabIndex = 4;
-            kryptonLabel1.Values.Text = "Spritai's AutoClick 1.2";
+            kryptonLabel1.Values.Text = "Spritai's AutoClick 1.3";
             kryptonLabel1.Click += kryptonLabel1_Click;
             // 
             // MsValue
@@ -132,11 +133,21 @@
             MsValue.Value = new decimal(new int[] { 5, 0, 0, 0 });
             MsValue.ValueChanged += MsValue_ValueChanged;
             // 
+            // NotifCheck
+            // 
+            NotifCheck.Location = new Point(139, 153);
+            NotifCheck.Name = "NotifCheck";
+            NotifCheck.Size = new Size(51, 20);
+            NotifCheck.TabIndex = 6;
+            NotifCheck.Values.Text = "Notif";
+            NotifCheck.CheckedChanged += NotifCheck_CheckedChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(328, 386);
+            Controls.Add(NotifCheck);
             Controls.Add(MsValue);
             Controls.Add(kryptonLabel1);
             Controls.Add(kryptonTextBox1);
@@ -159,5 +170,6 @@
         private Krypton.Toolkit.KryptonTextBox kryptonTextBox1;
         private Krypton.Toolkit.KryptonLabel kryptonLabel1;
         private Krypton.Toolkit.KryptonNumericUpDown MsValue;
+        private Krypton.Toolkit.KryptonCheckBox NotifCheck;
     }
 }
