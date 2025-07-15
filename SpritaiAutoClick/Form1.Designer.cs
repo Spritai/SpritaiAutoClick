@@ -157,6 +157,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
             Text = "Spritai's AutoClick";
+            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }

@@ -156,5 +156,10 @@ namespace SpritaiAutoClick
                 MessageBox.Show("Erreur lors de la lecture du son : " + ex.Message);
             }
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
