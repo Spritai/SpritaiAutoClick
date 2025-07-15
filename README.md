@@ -10,8 +10,6 @@ Ce projet est un utilitaire simple et léger permettant d’automatiser les clic
 
 🕹️ Activation/désactivation via une touche de raccourci
 
-📌 Clics personnalisables (gauche / droit)
-
 ⏱️ Interface simple pour configurer les délais
 
 🔄 Boucle continue jusqu’à désactivation
