@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using System.Media;
 
 namespace SpritaiAutoClick
 {
@@ -44,9 +45,7 @@ namespace SpritaiAutoClick
 
         private void kryptonTextBox1_KeyDown(object sender, KeyEventArgs e)
         {
-
             UnregisterHotKey(this.Handle, currentHotkeyId);
-
 
             currentHotkeyKey = e.KeyCode;
             kryptonTextBox1.Text = currentHotkeyKey.ToString();
@@ -73,7 +72,14 @@ namespace SpritaiAutoClick
 
         private void ClickTimer_Tick(object sender, EventArgs e)
         {
-            DoMouseClick();
+            // ANTI SOURIS SUR FENETRE
+            Point cursorScreenPos = Cursor.Position;
+            Point cursorClientPos = this.PointToClient(cursorScreenPos);
+
+            if (!this.ClientRectangle.Contains(cursorClientPos))
+            {
+                DoMouseClick();
+            }
         }
 
         private void DoMouseClick()
@@ -85,12 +91,14 @@ namespace SpritaiAutoClick
 
         private void StartButton_Click(object sender, EventArgs e)
         {
+            PlayClickSound();
             kryptonCheckBox1.Checked = true;
             clickTimer.Start();
         }
 
         private void StopButton_Click(object sender, EventArgs e)
         {
+            PlayClickSound();
             kryptonCheckBox1.Checked = false;
             clickTimer.Stop();
         }
@@ -103,24 +111,45 @@ namespace SpritaiAutoClick
                 clickTimer.Stop();
         }
 
-        private void kryptonTextBox1_TextChanged(object sender, EventArgs e)
-        {
+        private void kryptonTextBox1_TextChanged(object sender, EventArgs e) { }
 
-        }
+        private void kryptonLabel1_Click(object sender, EventArgs e) { }
 
-        private void kryptonLabel1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void delayNumericUpDown_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
+        private void delayNumericUpDown_ValueChanged(object sender, EventArgs e) { }
 
         private void MsValue_ValueChanged(object sender, EventArgs e)
         {
             clickTimer.Interval = (int)MsValue.Value;
         }
+
+        // SON
+        private void PlayClickSound()
+        {
+            try
+            {
+                SoundPlayer player = new SoundPlayer("click.wav");
+                player.Play();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur lors de la lecture du son : " + ex.Message);
+            }
+        }
     }
 }
+
+
+
+
+
+//   $$$$$$\  $$$$$$$\  $$$$$$$\  $$$$$$\ $$$$$$$$\  $$$$$$\  $$$$$$\ 
+//  $$  __$$\ $$  __$$\ $$  __$$\ \_$$  _|\__$$  __|$$  __$$\ \_$$  _|
+//  $$ /  \__|$$ |  $$ |$$ |  $$ |  $$ |     $$ |   $$ /  $$ |  $$ |  
+//  \$$$$$$\  $$$$$$$  |$$$$$$$  |  $$ |     $$ |   $$$$$$$$ |  $$ |  
+//   \____$$\ $$  ____/ $$  __$$<   $$ |     $$ |   $$  __$$ |  $$ |  
+//  $$\   $$ |$$ |      $$ |  $$ |  $$ |     $$ |   $$ |  $$ |  $$ |  
+//  \$$$$$$  |$$ |      $$ |  $$ |$$$$$$\    $$ |   $$ |  $$ |$$$$$$\ 
+//   \______/ \__|      \__|  \__|\______|   \__|   \__|  \__|\______|
+//                                                                    
+                                         
+
