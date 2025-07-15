@@ -44,11 +44,11 @@ namespace SpritaiAutoClick
             kryptonCheckBox1.AutoCheck = false;
             RegisterHotKey(this.Handle, currentHotkeyId, MOD_NONE, currentHotkeyKey);
 
-            // Initialisation de la notification
+            // notif
             notifyIcon = new NotifyIcon();
             notifyIcon.Visible = true;
             notifyIcon.Icon = SystemIcons.Information;
-            notifyIcon.BalloonTipTitle = "Spritaï AutoClick";
+            notifyIcon.BalloonTipTitle = "Spritai AutoClick";
         }
 
         private void kryptonTextBox1_KeyDown(object sender, KeyEventArgs e)
