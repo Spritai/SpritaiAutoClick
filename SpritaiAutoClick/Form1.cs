@@ -99,7 +99,7 @@ namespace SpritaiAutoClick
 
         private void StartButton_Click(object sender, EventArgs e)
         {
-            PlayClickSound();
+            //PlayClickSound();
             kryptonCheckBox1.Checked = true;
             clickTimer.Start();
 
@@ -112,7 +112,7 @@ namespace SpritaiAutoClick
 
         private void StopButton_Click(object sender, EventArgs e)
         {
-            PlayClickSound();
+            //PlayClickSound();
             kryptonCheckBox1.Checked = false;
             clickTimer.Stop();
 
