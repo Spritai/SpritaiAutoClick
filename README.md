@@ -1,7 +1,7 @@
 
 🖱️ SpritaiAutoClick v1.2
 
-Bienvenue dans la première release officielle de AutoClicker !
+Bienvenue dans la première release officielle de Spritai's AutoClicker !
 
 Ce projet est un utilitaire simple et léger permettant d’automatiser les clics souris à intervalles réguliers. Idéal pour les tests, les jeux ou les tâches répétitives.
 
