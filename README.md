@@ -19,7 +19,7 @@ Ce projet est un utilitaire simple et léger permettant d’automatiser les clic
 📦 Installation
 Télécharge l’exécutable correspondant à ton système d’exploitation dans les assets ci-dessous.
 
-Note : Cette version ne nécessite pas d’installation. Lance simplement le fichier .exe / .app / .py selon la version fournie.
+Note : Cette version ne nécessite pas d’installation. Lance simplement le fichier .exe.
 
 ⚠️ Limitations connues
 Interface graphique minimale
@@ -29,8 +29,8 @@ Aucune détection de mouvement ou d’arrêt conditionnel
 Compatibilité testée uniquement sur Windows (à adapter selon ton cas)
 
 🧭 Prochaine étape
+
 Ajout d'une interface plus avancée (GUI complète)
 
 Support multi-OS
 
-Configuration de séquences de clics
